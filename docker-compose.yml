@@ -1,0 +1,38 @@
+version: '2.3'
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+services:
+  fore:
+    image: "${SERVICE}:1.0.0"
+    container_name: "${SERVICE}"
+## Restart policy v2
+    restart: always
+## Resource Limit v2
+#    cpu_quota: 50000
+    mem_limit: 2G
+    volumes:
+      - ./logs:/var/gitproject/$SERVICE/logs
+      - ./app/modules:/var/gitproject/$SERVICE/app/modules:ro
+      - ./config:/var/gitproject/$SERVICE/config:ro
+      - ./functional_spec:/var/gitproject/$SERVICE/functional_spec:ro
+      - ./.env:/var/gitproject/$SERVICE/.env:ro
+      - ./bin/index.js:/var/gitproject/$SERVICE/bin/index.js:ro
+    build:
+      context: .
+      args:
+        SERVICE: "$SERVICE"
+        NODE_ENV: "$NODE_ENV"
+      dockerfile: Dockerfile
+    environment:
+      - "TZ=Asia/Jakarta"
+    env_file:
+      - .env
+    ports:
+      - "$PORT:$PORT"
+    networks:
+      - backend
