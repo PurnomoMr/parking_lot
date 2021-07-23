@@ -71,4 +71,10 @@ describe('Testing Functions in Parking class',  () => {
         assert.equal(result, 6, 'The numbers slots are equal')
         done()
     })
+
+    it('Leave Location Parking from slot 4', (done) => {
+        let result = parkingLot.leaveParkingCar(inputCommands[7])
+        assert.equal(result, 4, 'The numbers slot 4 is Free.')
+        done()
+    })
 })

@@ -36,7 +36,11 @@ class Parking {
                         }
                     }
                 }
+            } else {
+                throw new Error('Sorry, the Parking lot is Full.')
             }
+        } else {
+            throw new Error('Minimum create parking should be one slot.')
         }
     }
 
@@ -47,6 +51,23 @@ class Parking {
         }
         return true
     }
+
+    leaveParkingCar (input) {
+    	if (this.MAXS_SLOTS > 0) {
+			let index = parseInt(input.split(' ')[2] - 1);
+			if (index >= this.MAXS_SLOTS) {
+				throw new Error(`Slot number ${index + 1} is not found`);
+			} else if (this.Slots[index] === null) {
+				throw new Error(`Slot number ${index + 1} is already free`);
+			} else if (index > -1 && index <= this.Slots.length) {
+			    this.Slots[index] = null;
+			    index = index + 1;
+			    return index;
+			}
+		} else {
+			throw new Error('Sorry, parking lot is empty');
+		}
+	}
 }
 
 module.exports = Parking
