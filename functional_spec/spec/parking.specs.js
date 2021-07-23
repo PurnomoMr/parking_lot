@@ -35,4 +35,40 @@ describe('Testing Functions in Parking class',  () => {
         assert.equal(slots, 6)
         done()
     })
+
+    it('Set Location Parking to car 1', (done) => {
+        let result = parkingLot.setParkingCar(inputCommands[1])
+        assert.equal(result, 1, 'The numbers slots are equal')
+        done()
+    })
+    
+    it('Set Location Parking to car 2', (done) => {
+        let result = parkingLot.setParkingCar(inputCommands[2])
+        assert.equal(result, 2, 'The numbers slots are equal')
+        done()
+    })
+    
+    it('Set Location Parking to car 3', (done) => {
+        let result = parkingLot.setParkingCar(inputCommands[3])
+        assert.equal(result, 3, 'The numbers slots are equal')
+        done()
+    })
+    
+    it('Set Location Parking to car 4', (done) => {
+        let result = parkingLot.setParkingCar(inputCommands[4])
+        assert.equal(result, 4, 'The numbers slots are equal')
+        done()
+    })
+    
+    it('Set Location Parking to car 5', (done) => {
+        let result = parkingLot.setParkingCar(inputCommands[5])
+        assert.equal(result, 5, 'The numbers slots are equal')
+        done()
+    })
+    
+    it('Set Location Parking to car 6', (done) => {
+        let result = parkingLot.setParkingCar(inputCommands[6])
+        assert.equal(result, 6, 'The numbers slots are equal')
+        done()
+    })
 })
