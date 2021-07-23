@@ -1,7 +1,11 @@
 const chai = require('chai')
 const fs = require('fs')
+const Parking = require('../../app/modules/parking.js')
 
 var inputCommands = []
+var slots
+var parkingLot = new Parking()
+
 
 describe('Test for read input data',  () => {
     it('reading txt file', (done) => {
@@ -20,6 +24,15 @@ describe('Test for read input data',  () => {
         assert.equal(inputCommands[2].split(' ')[0], 'park')
         assert.equal(inputCommands[7].split(' ')[0], 'leave')
         assert.equal(inputCommands[8], 'status')
+        done()
+    })
+})
+
+describe('Testing Functions in Parking class',  () => {
+    const assert = chai.assert
+    it('Creating a Parking lot', (done) => {
+        slots = parkingLot.createParking(inputCommands[0])
+        assert.equal(slots, 6)
         done()
     })
 })
