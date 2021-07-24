@@ -1,0 +1,24 @@
+version: '2.3'
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+services:
+  parking_lot:
+    # build: data/nginx
+    image: hoosin/alpine-nginx-nodejs #nginx:alpine
+    restart: always
+    container_name: ${SERVICE}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/gitproject/$SERVICE/
+    environment:
+      - "TZ=Asia/Jakarta"
+    networks:
+      - frontend
+      - backend
