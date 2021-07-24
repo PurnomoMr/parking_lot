@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Design problem - Parking Lot",
   "main": "index.js",
-  "directories": { 
+  "directories": {
     "test": "functional_spec"
   },
   "scripts": {

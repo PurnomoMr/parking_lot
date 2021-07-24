@@ -30,51 +30,74 @@ describe('Test for read input data',  () => {
 
 describe('Testing Functions in Parking class',  () => {
     const assert = chai.assert
-    it('Creating a Parking lot', (done) => {
+    it('Creating a Parking lot with 6 slots', (done) => {
         slots = parkingLot.createParking(inputCommands[0])
         assert.equal(slots, 6)
         done()
     })
 
-    it('Set Location Parking to car 1', (done) => {
+    it('Allocated slot number: 1', (done) => {
         let result = parkingLot.setParkingCar(inputCommands[1])
         assert.equal(result, 1, 'The numbers slots are equal')
         done()
     })
     
-    it('Set Location Parking to car 2', (done) => {
+    it('Allocated slot number: 2', (done) => {
         let result = parkingLot.setParkingCar(inputCommands[2])
         assert.equal(result, 2, 'The numbers slots are equal')
         done()
     })
     
-    it('Set Location Parking to car 3', (done) => {
+    it('Allocated slot number: 3', (done) => {
         let result = parkingLot.setParkingCar(inputCommands[3])
         assert.equal(result, 3, 'The numbers slots are equal')
         done()
     })
     
-    it('Set Location Parking to car 4', (done) => {
+    it('Allocated slot number: 4', (done) => {
         let result = parkingLot.setParkingCar(inputCommands[4])
         assert.equal(result, 4, 'The numbers slots are equal')
         done()
     })
     
-    it('Set Location Parking to car 5', (done) => {
+    it('Allocated slot number: 5', (done) => {
         let result = parkingLot.setParkingCar(inputCommands[5])
         assert.equal(result, 5, 'The numbers slots are equal')
         done()
     })
     
-    it('Set Location Parking to car 6', (done) => {
+    it('Allocated slot number: 6', (done) => {
         let result = parkingLot.setParkingCar(inputCommands[6])
         assert.equal(result, 6, 'The numbers slots are equal')
         done()
     })
 
-    it('Leave Location Parking from slot 4', (done) => {
+    it('Registration number KA-01-HH-3141 with Slot Number 6 is free with Charge 30', (done) => {
         let result = parkingLot.leaveParkingCar(inputCommands[7])
-        assert.equal(result, 4, 'The numbers slot 4 is Free.')
+        assert.equal(result.number, "KA-01-HH-3141")
+        assert.equal(result.slots, 6)
+        assert.equal(result.charge,30)
         done()
     })
+    
+    it('Checking Parking status', (done) => {
+        let result = parkingLot.getParkingStatus()
+        assert.equal(result.length, 6)
+        done()
+    })
+
+    it('Allocated slot number: 6', (done) => {
+        let result = parkingLot.setParkingCar(inputCommands[11])
+        assert.equal(result, 6, 'The numbers slots are equal')
+        done()
+    })
+
+    it('Registration number KA-01-BB-0001 with Slot Number 3 is free with Charge 50', (done) => {
+        let result = parkingLot.leaveParkingCar(inputCommands[12])
+        assert.equal(result.number, "KA-01-BB-0001")
+        assert.equal(result.slots, 3)
+        assert.equal(result.charge, 50)
+        done()
+    })
+  
 })
